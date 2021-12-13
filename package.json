@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "dev": "dumi dev",
+    "build:site": "rimraf doc-site && dumi build",
+    "preview:site": "cross-env SITE_BUILD_ENV=PREVIEW npm run build:site && serve doc-site",
+    "deploy:site": "npm run build:site && gh-pages -d doc-site"
   },
   "keywords": [],
   "author": "",
@@ -18,11 +22,14 @@
     "@umijs/fabric": "^2.8.1",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
+    "dumi": "^1.1.35",
+    "gh-pages": "^3.2.3",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
     "prettier": "^2.5.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "serve": "^13.0.2"
   },
   "lint-staged": {
     "src/**/*.ts?(x)": [
@@ -47,6 +54,7 @@
     }
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "prop-types": "^15.7.2"
   }
 }
